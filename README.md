@@ -1,5 +1,4 @@
-# globalexception
+# Spring Boot 3
 
-- Spring Boot 3
-    - apply validation
-    - global exception handling
+- apply validation
+- global exception handling
