@@ -6,6 +6,7 @@ import org.springframework.beans.TypeMismatchException;
 import org.springframework.http.*;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.HandlerMethodValidationException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
@@ -19,6 +20,14 @@ import java.util.Map;
 public class GlobalControllerAdvice extends ResponseEntityExceptionHandler {
 
     private static final String ERROR_PROPERTY = "errors";
+
+    @ExceptionHandler(Exception.class)
+    public ProblemDetail handleAllException(Exception e) {
+        return ProblemDetail.forStatusAndDetail(
+            HttpStatus.INTERNAL_SERVER_ERROR,
+            "서버 요청 처리중 문제가 발생했습니다."
+        );
+    }
 
     // ResponseEntityExceptionHandler 메서드 오버라이딩
 
