@@ -1,0 +1,12 @@
+server:
+  port: 80
+  servlet.context-path: /
+
+logging.level:
+  com.springboot.globalexception: debug
+
+spring:
+  mvc:
+    problemdetails:
+      enabled: true
+  devtools.livereload.enabled: true
